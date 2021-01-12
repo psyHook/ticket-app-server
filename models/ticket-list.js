@@ -22,7 +22,7 @@ class TicketList {
   // Logica para crear nuevo ticket
   createTicker() {
     const newTicket = new Ticket(this.nextNumber);
-    this.assigned.push(newTicket);
+    this.pending.push(newTicket);
     return newTicket;
   }
 
@@ -41,6 +41,8 @@ class TicketList {
     nextTicket.desktop = desktop;
 
     this.assigned.unshift(nextTicket);
+
+    return nextTicket;
   }
 }
 
