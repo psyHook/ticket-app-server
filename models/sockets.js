@@ -17,13 +17,15 @@ class Sockets {
 
       // Escuchar evento: mensaje-to-server
       socket.on("request-ticket", ( data, callback ) => {
-        const newTicket = this.ticketList.createTicker();
+        const newTicket = this.ticketList.createTicket();
         callback( newTicket )
       });
 
       socket.on('next-ticket-to-work', ( { agent, desktop }, callback) => {
         const yourTicket = this.ticketList.assignTicket( agent, desktop);
-        callback( yourTicket )
+        callback( yourTicket );
+
+        this.io.emit('ticket-assigned', this.ticketList.last13 );
       })
     });
   }

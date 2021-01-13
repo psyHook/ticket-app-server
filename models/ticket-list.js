@@ -14,13 +14,13 @@ class TicketList {
     return this.lastNumber;
   }
 
-  // 3 ticker que se veran en las card y 10 en el historial
+  // 3 ticket que se veran en las card y 10 en el historial
   get last13() {
-    return this.assigned.splice(0, 13);
+    return this.assigned.slice(0, 13);
   }
 
   // Logica para crear nuevo ticket
-  createTicker() {
+  createTicket() {
     const newTicket = new Ticket(this.nextNumber);
     this.pending.push(newTicket);
     return newTicket;
